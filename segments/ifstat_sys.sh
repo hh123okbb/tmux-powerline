@@ -3,7 +3,7 @@
 
 run_segment() {
 	sleeptime="0.5"
-	iface="wlan0"
+	iface="eth0"
 	RXB=$(</sys/class/net/"$iface"/statistics/rx_bytes)
 	TXB=$(</sys/class/net/"$iface"/statistics/tx_bytes)
 	sleep "$sleeptime" 
@@ -14,7 +14,7 @@ run_segment() {
 
 	rx=$(echo "${RXDIF} / 1024 / ${sleeptime}" | bc)
 	tx=$(echo "${TXDIF} / 1024 / ${sleeptime}" | bc)
-	echo -e "⇊ ${rx}K/s ⇈ ${tx}K/s"
+	echo -e "↓${rx} ↑${tx}"
 
 	return 0
 }
